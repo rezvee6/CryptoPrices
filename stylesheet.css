@@ -40,9 +40,14 @@ h3{
   font-family: "Segoe MDL2 Assets";
   font-size: 10px;
 }
+.logo{
+    height: 50px;
+    margin-bottom: -15px;
+}
 img{
     height: 15px;
 }
+
 #window-controls .button {
   grid-row: 1 / span 1;
   display: flex;

@@ -1,27 +1,38 @@
 var request = require('request');
     setInterval(function(){
-      request("https://api.coinmarketcap.com/v1/ticker/ethereum/", function(error, response, body) {
+      request("https://api.coinmarketcap.com/v1/ticker/", function(error, response, body) {
         // body = body.slice(3);
         body = JSON.parse(body);
-        console.log(body);
         newPrice(body);
       });
-    }, 5000);
-    var ethPrice;
+    }, 1000);
     var btcPrice;
+    var BtcChange;
+    var EthPrice;
+    var EthChange;
     function newPrice(arr) {
-      currentPrice = arr[0]["price_usd"];
-      currentPrice = currentPrice.slice(0, -7);
-      btcPrice = arr[0]["price_btc"];
-      btcPrice = btcPrice.slice(0,-4);
-      mktEth = arr[0][""]
+        currentBtcPrice = arr[0]["price_usd"];
+        currentBtcPrice = currentBtcPrice.slice(0, -7);
+        BtcChange = arr[0]["percent_change_24h"];
+      
+        //   Eth price
+        currentEthPrice = arr[1]["price_usd"];
+        currentEthPrice = currentEthPrice.slice(0, -7);
+        EthChange = arr[1]["percent_change_24h"];
 
-      var ethOutput = document.getElementById('price');
-      ethOutput.innerHTML = "$" + currentPrice + "<br>" + "฿" + btcPrice ;
+
+        var btcOutput = document.getElementById('btcPrice');
+        btcOutput.innerHTML = "$" + currentBtcPrice + "<br>"  + BtcChange + "%" ;
+        //   Eth price
+        var EthOutput = document.getElementById('ethPrice');
+        EthOutput.innerHTML = "$" + currentEthPrice + "<br>"  + EthChange + "%" ;
       
-      
-      ethPrice=currentPrice;      
-      btcPrice = btcPrice;
+        btcPrice=btcOutput;      
+        BtcChange = BtcChange;
+
+        //   Eth price
+        EthPrice=EthOutput;      
+        EthChange = EthChange;
 
       
 
