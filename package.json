@@ -4,11 +4,23 @@
   "description": "bitcoin price tracker",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dist": "build",
+    "package-win": "electron-packager ./bin --platform=win32 --arch=ia32 --out=./dist --overwrite=true"
   },
-  "author": "",
+  "build": {
+    "appId": "BitcoinPrice",
+    
+    "win":{
+      "target": "nsis",
+      "icon": "img/bitcoin.ico"
+    }
+  },
+  "author": "Reezvee Sikder",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^4.1.1"
+    "electron": "^4.1.1",
+    "electron-builder": "^20.39.0",
+    "electron-packager": "^13.1.1"
   }
 }
